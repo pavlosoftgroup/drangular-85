@@ -1,1 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
+/developer.develop/node_modules/
+/developer.develop/e2e/
+/html/
+.idea/inspectionProfiles/
+.git/
