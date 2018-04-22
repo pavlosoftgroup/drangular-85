@@ -1,0 +1,24 @@
+﻿<!-- Head Section -->
+<div class="head-section bg">
+    <div class="container">
+       <h4>Рекомендуйте нас друзям<span class="font-light">Отримуйте купон на 50% знижку</span></h4>
+        <p><a hreff="/">лінк на купон</a></p>
+    </div>
+</div>
+<!-- End Section -->
+<div class="container-page">
+    <div class="box-page padding-bottom20">
+        <div class="wrap-product">
+            <!-- App Product -->
+            <app-product 
+                [filter]="{
+                    index: productWishlist
+                }"
+                [showBtnClose]="true"
+                [setlimit]="8" 
+                [paginate]="true"
+                (onRemove)="onSelectRemove($event)"
+            ></app-product>
+        </div>
+    </div>
+</div>

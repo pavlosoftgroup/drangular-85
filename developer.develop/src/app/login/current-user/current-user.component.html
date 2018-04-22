@@ -1,0 +1,148 @@
+<!-- Head Section -->
+<div class="head-section bg">
+    <div class="container">
+        <div class="center-align">
+            <h2>Hello, {{user.firstName}}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-page">
+    <div class="box-page">
+        <mat-card>
+            <mat-card-content>
+                <h4 class="example-h2">Settings
+                    <a class="right" (click)="toggleEdit()">
+                        <mat-icon matPrefix>edit</mat-icon>
+                    </a>
+                </h4>
+                <mat-tab-group class="demo-tab-group">
+                    <mat-tab label="Build">
+                        <ng-template mat-tab-label>
+                            <mat-icon matPrefix>account_circle</mat-icon>
+                            Информация
+                        </ng-template>
+
+                        <!--Form-->
+
+                        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"
+                              class="margin-left20 margin-right20 user-form">
+                            <div *ngIf="!user" class="error red"></div>
+                            <div class="row margin-top20">
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt" *ngIf="editStatus">
+                                        <input matInput
+                                               type="text"
+                                               ([value])="user.firstName"
+
+                                               name="firstName"
+                                               [(ngModel)]="firstName"
+                                               #firstNameUser="ngModel"
+                                               placeholder="First Name"
+                                               required>
+                                    </mat-form-field>
+                                    <p *ngIf="!editStatus" class="edit-user">
+                                        <label>First Name</label>
+                                        {{user.firstName}}
+                                    </p>
+                                </div>
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt" *ngIf="editStatus">
+                                        <input matInput
+                                               type="text"
+                                               [value]="user.lastName"
+
+                                               name="lastName"
+                                               [(ngModel)]="lastName"
+                                               #lastNameUser="ngModel"
+                                               placeholder="Last Name"
+                                               required>
+                                    </mat-form-field>
+                                    <p *ngIf="!editStatus" class="edit-user">
+                                        <label>Last Name</label>
+                                        {{user.lastName}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row margin-top20">
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt" *ngIf="editStatus">
+                                        <input matInput
+
+                                               type="email"
+                                               value="{{user.mail}}"
+                                               name="emailUser"
+                                               placeholder="E-mail"
+                                               [(ngModel)]="emailUser"
+                                               #emailUserEd="ngModel"
+                                               required
+                                               email>
+                                        <mat-error *ngIf="emailUserEd.invalid">{{getErrorMessage}}</mat-error>
+                                    </mat-form-field>
+                                    <p *ngIf="!editStatus" class="edit-user">
+                                        <label>E-mail</label>
+                                        {{user.mail}}
+                                    </p>
+                                </div>
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt" *ngIf="editStatus">
+                                        <input matInput
+                                               [(ngModel)]="telUser"
+                                               #telUserEd="ngModel"
+                                               type="tel"
+                                               ([value])="user.telephone"
+                                               name="telUser"
+                                               placeholder="Telephone"
+                                               required>
+                                        <mat-error *ngIf="telUserEd.invalid">{{getErrorMessage}}</mat-error>
+                                    </mat-form-field>
+                                    <p *ngIf="!editStatus" class="edit-user">
+                                        <label>Telephone</label>
+                                        {{user.telephone}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row margin-top20">
+                                <div class="col l12 s12">
+                                    <button [disabled]="userForm.invalid" type="submit" mat-button
+                                            class="btn btn-primary margin-bottom10">
+                                        <span>Сохранить</span>
+                                        <span *ngIf="touched">Loading...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-tab>
+
+                    <mat-tab label="Tab 5">
+                        <ng-template mat-tab-label>
+                            <mat-icon>security</mat-icon>
+                            Настройки
+                        </ng-template>
+                        No content
+                    </mat-tab>
+                    <mat-tab label="Address" *ngIf="user.address">
+                        <ng-template mat-tab-label>
+                            <mat-icon>location_on</mat-icon>
+                            Адреса
+                        </ng-template>
+                        <section class="example-section">
+                            <!--<mat-progress-bar-->
+                                    <!--class="example-margin"-->
+                                    <!--[color]="primary"-->
+                                    <!--[mode]="indeterminate"-->
+                                    <!--&lt;!&ndash;[value]="value"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;[bufferValue]="bufferValue">&ndash;&gt;-->
+                            <!--</mat-progress-bar>-->
+                            Address:
+                        </section>
+                        <addres [addressArr]="user.address"></addres>
+
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

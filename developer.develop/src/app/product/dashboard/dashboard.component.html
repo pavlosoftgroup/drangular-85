@@ -1,0 +1,12 @@
+<div class="page-header">
+    <!-- Breadcumbs -->
+    <breadcumb></breadcumb>
+    <div class="right">
+        <a routerLink="/user/login" class="btn btn-default">
+            <i *ngIf="userStatus" class="material-icons">verified_user</i>
+            <i *ngIf="!userStatus" class="material-icons">account_box</i>
+            <i *ngIf="!userStatus" class="material-icons">exit_to_app</i>
+        </a>
+    </div>
+</div>
+<router-outlet></router-outlet>

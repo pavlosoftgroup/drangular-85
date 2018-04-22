@@ -1,0 +1,47 @@
+<!-- Head Section -->
+<div class="head-section bg">
+    <div class="container">
+        <div class="center-align">
+            <h2> Forgot your password?</h2>
+        </div>
+    </div>
+</div>
+<div class="container-page">
+    <div class="box-page">
+        <mat-card class="forgot-card">
+            <mat-card-content>
+                <!-- Start Form -->
+                <form #formForgot="ngForm" (ngSubmit)="onSubmit(formForgot)">
+                    <div class="row">
+                        <div class="col m8 s8">
+                            <mat-form-field>
+                                <input matInput
+                                       type="email"
+                                       placeholder="Email"
+                                       value=""
+                                       name="email"
+                                       [(ngModel)]="email"
+                                       #emailForgot="ngModel"
+                                       required
+                                       email>
+                            </mat-form-field>
+                            <small class="error" *ngIf="emailForgot.errors?.required && emailForgot.touched">required error
+                            </small>
+                            <small class="error" *ngIf="emailForgot.errors?.required && emailForgot.dirty">required error
+                            </small>
+                            <small class="error" *ngIf="emailForgot.errors?.email && emailForgot.dirty">email not valid
+                            </small>
+                        </div>
+                           <div class="col r4 push-r4 s4 right-align">
+                            <button [disabled]="formForgot.invalid || touched" type="submit" mat-button
+                                    class="btn btn-primary margin-bottom10">
+                                <span *ngIf="nottouched">Log In</span>
+                                <span *ngIf="touched">Loading...</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

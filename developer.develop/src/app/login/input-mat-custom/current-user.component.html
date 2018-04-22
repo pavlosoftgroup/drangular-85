@@ -1,0 +1,119 @@
+<!-- Head Section -->
+<div class="head-section bg">
+    <div class="container">
+        <div class="center-align">
+            <h2>{{user.mail}}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-page">
+    <div class="box-page">
+        <mat-card>
+            <mat-card-content>
+                <h4 class="example-h2">{{user.firstName + ' ' + user.lastName}}</h4>
+                <mat-tab-group class="demo-tab-group">
+                    <mat-tab label="Build">
+                        <ng-template mat-tab-label>
+                            <mat-icon matPrefix>account_circle</mat-icon>
+                            Информация
+                        </ng-template>
+
+                        <!--Form-->
+
+                        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)"
+                              class="margin-left20 margin-right20 user-form">
+                            <div *ngIf="errorMessage" class="error red">Incorect email or password!</div>
+                            <div class="row margin-top20">
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt">
+                                        <input matInput
+                                               type="text"
+                                               value="{{user.firstName}}"
+
+                                               name="firstName"
+                                               [(ngModel)]="firstName"
+                                               #firstNameUser="ngModel"
+                                               placeholder="First Name"
+                                               required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt">
+                                        <input matInput
+                                               type="text"
+                                               name="lastName"
+                                               value="{{user.lastName}}"
+                                               [(ngModel)]="lastName"
+                                               #lastNameEd="ngModel"
+                                               placeholder="Last Name"
+                                               required
+                                        >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row margin-top20">
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt">
+                                        <input matInput
+                                               [disabled]="!editStatus"
+
+                                               type="email"
+                                               value="{{user.mail}}"
+                                               name="emailUser"
+                                               placeholder="E-mail"
+                                               [(ngModel)]="emailUser"
+                                               #emailUserEd="ngModel"
+                                               required
+                                               email>
+                                        <mat-error *ngIf="emailUserEd.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col m6 s6">
+                                    <mat-form-field class="midle-lgt">
+                                        <input matInput
+                                               [disabled]="editStatus"
+                                               [(ngModel)]="telUser"
+                                               #telUserEd="ngModel"
+                                               type="tel"
+                                               value="{{user.tel}}"
+                                               name="telUser"
+                                               placeholder="Telephone"
+                                               required>
+                                        <mat-error *ngIf="telUserEd.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row margin-top20">
+                                <div class="col l12 s12">
+                                    <button [disabled]="userForm.invalid" type="submit" mat-button
+                                            class="btn btn-primary margin-bottom10">
+                                        <span>Сохранить</span>
+                                        <span *ngIf="touched">Loading...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-tab>
+
+                    <mat-tab label="Tab 5">
+                        <ng-template mat-tab-label>
+                            <mat-icon>security</mat-icon>
+                            Настройки
+                        </ng-template>
+                        No content
+                    </mat-tab>
+                    <mat-tab label="Address">
+                        <ng-template mat-tab-label>
+                            <mat-icon>location_on</mat-icon>
+                            Адреса
+                        </ng-template>
+                        No content
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+    <!--{{console.log(address)}}-->
+    <!--{{address}}-->
+    Titile
+<mat-accordion>
+    <div *ngFor="let addres of address">
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+
+                    Address:
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{addres.city + ' ' +addres.street}}
+                    <mat-icon>place</mat-icon>
+
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+                <input matInput placeholder="City" name="city" value="{{addres.city}}">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Street" name="street" value="{{addres.street}}">
+            </mat-form-field>
+        </mat-expansion-panel>
+    </div>
+</mat-accordion>

@@ -1,0 +1,24 @@
+.demo-tab-group {
+    border: 1px solid #e8e8e8;
+}
+
+.demo-tab-content {
+    padding: 16px;
+}
+
+.mat-form-field {
+    width: auto;
+}
+
+.user-form {
+    width: 80%;
+    margin: 10px auto;
+}
+
+.edit-user label {
+    display: block;
+    font-size: 10px;
+}
+.example-margin {
+    margin: 0 10px;
+}

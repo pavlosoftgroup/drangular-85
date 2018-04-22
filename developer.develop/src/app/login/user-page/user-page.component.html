@@ -1,0 +1,18 @@
+<div class="page-header">
+    <!-- Breadcumbs -->
+    <breadcumb></breadcumb>
+    <div class="right">
+        <a *ngIf="!icon" routerLink="/user/login" class="btn btn-default">
+            <i class="material-icons md-48">account_circle</i>
+        </a>
+        <a *ngIf="icon" routerLink="/user/login" class="btn btn-default">
+            <i class="material-icons md-48">settings</i>
+            <!--<i class="material-icons">exit_to_app</i>-->
+        </a>
+        <a *ngIf="icon" routerLink="/user/logout" class="btn btn-default">
+        <!--<a *ngIf="icon" routerLink="/user/logout" class="btn btn-default">-->
+            <i class="material-icons md-48">exit_to_app</i>
+        </a>
+    </div>
+</div>
+<router-outlet></router-outlet>

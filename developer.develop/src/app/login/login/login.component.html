@@ -1,0 +1,89 @@
+<!-- Head Section -->
+<div class="head-section bg">
+    <div class="container">
+        <div class="center-align">
+            <h2>Sign In</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container-page">
+    <div class="box-page">
+        <mat-card class="login-card">
+            <mat-card-content>
+                <!-- Start Form -->
+                <form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
+                    <div *ngIf="errorLoginMessage" class="error red">Incorect email or password!</div>
+                    <div class="row">
+                        <div class="col m12 s12">
+                            <mat-form-field class="midle-lgt">
+                                <input matInput about=""
+                                       type="email"
+                                       placeholder="Email"
+                                       value=""
+                                       name="login"
+                                       [(ngModel)]="login"
+                                       #loginLogin="ngModel"
+                                       required
+                                       email>
+                            </mat-form-field>
+                            <small class="error" *ngIf="loginLogin.errors?.required && loginLogin.touched">required
+                                error
+                            </small>
+                            <small class="error" *ngIf="loginLogin.errors?.required && loginLogin.dirty">required error
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col m12 s12">
+                            <mat-form-field class="midle-lgt">
+                                <input matInput
+                                       type="password"
+                                       placeholder="Password"
+                                       value=""
+                                       name="pass"
+                                       [(ngModel)]="pass"
+                                       #passLogin="ngModel"
+                                       required
+                                       pass>
+                            </mat-form-field>
+                            <small class="error" *ngIf="passLogin.errors?.required && passLogin.touched">required error
+                            </small>
+                            <small class="error" *ngIf="passLogin.errors?.required && passLogin.dirty">required error
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <div class="row margin-top20">
+                        <div class="col l6 push-l6 s12 right-align">
+                            <button [disabled]="formLogin.invalid || touched" type="submit" mat-button
+                                    class="btn btn-primary margin-bottom10">
+                                <span *ngIf="nottouched">Log In</span>
+                                <span *ngIf="touched">Loading...</span>
+                            </button>
+                        </div>
+                        <div class="col l6 pull-l6 s12">
+                            <a mat-button routerLink="/home" class="btn btn-default">Back To Home</a>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="row margin-top10">
+                        <div class="col s4 l4">
+                            <a routerLink="/user/sign-up" class="btn btn-default">Sign Up</a>
+                        </div>
+                        <div class="col s8 l8 right-align">
+                            <a routerLink="/user/forgot" class="btn btn-default">Forgot your password?</a>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
